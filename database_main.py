@@ -2,7 +2,7 @@ import sqlite3
 
 
 def connectToDatabse():
-    return sqlite3.connect("backendData.db", check_same_thread=False)
+    return sqlite3.connect("/home/pi/project/SmartHomeBackend/backendData.db", check_same_thread=False)
 
 
 def connectCursor(database):
