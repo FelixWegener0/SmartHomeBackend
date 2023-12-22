@@ -2,7 +2,7 @@ import requests
 import json
 import my_time as mytime
 
-data = json.load(open("endpoints.json"))
+data = json.load(open("/home/pi/project/SmartHomeBackend/endpoints.json"))
 
 
 def getAllTempData():
