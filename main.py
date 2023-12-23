@@ -1,12 +1,13 @@
 import threading
 import RESTapi as Restapi
 import handleDatabaseInteractions as database
+import Pythonlog as log
 
 from time import sleep
 
 
 def collectSensorData():
-    print('start collectSensorData as deaon')
+    log.info('start collectSensorData as deaon')
     while (True):
         database.loopWriteToDB()
         sleep(900)

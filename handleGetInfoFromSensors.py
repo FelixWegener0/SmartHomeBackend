@@ -1,12 +1,13 @@
 import requests
 import json
 import my_time as mytime
+import Pythonlog as log
 
 data = json.load(open("/home/pi/project/SmartHomeBackend/endpoints.json"))
 
 
 def getAllTempData():
-    print('log get sensor data')
+    log.info('log get sensor data')
     result = []
 
     for room in data:
@@ -20,5 +21,5 @@ def getAllTempData():
             "time": mytime.getCurrentTime(),
             "date": mytime.getCurrentDate()
         })
-    print("result: ", result)
+    log.info("result: ", result)
     return result

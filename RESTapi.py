@@ -3,6 +3,7 @@ from flask_restful import Api, Resource
 from flask_cors import CORS, cross_origin
 import database_main as db
 import handleDatabaseInteractions as dataBaseFunction
+import Pythonlog as log
 
 database = db.connectToDatabse()
 cursor = db.connectCursor(database)
@@ -30,6 +31,6 @@ api.add_resource(helloWorld, '/')
 
 
 def runServer():
-    print('Start flask API server as demon')
+    log.info('Start flask API server as demon')
     app.run(host='0.0.0.0')
     db.databseColseConnect(database)
