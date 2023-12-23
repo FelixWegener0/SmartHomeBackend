@@ -3,7 +3,7 @@ import json
 import my_time as mytime
 import Pythonlog as log
 
-data = json.load(open("/home/pi/project/SmartHomeBackend/endpoints.json"))
+# data = json.load(open("/home/pi/project/SmartHomeBackend/endpoints.json"))
 
 
 def getAllTempData():
