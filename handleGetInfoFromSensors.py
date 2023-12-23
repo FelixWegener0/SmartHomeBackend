@@ -11,17 +11,16 @@ def getAllTempData():
     result = []
 
     try:
-        for room in data:
-            temp = requests.get(room["ip"] + '/temp').json()
-            humid = requests.get(room["ip"] + '/humid').json()
+        temp = requests.get('http://192.168.0.187/temp').json()
+        humid = requests.get('http://192.168.0.187/humid').json()
 
-            result.append({
-                "name": room["name"],
-                "temp": temp,
-                "humid": humid,
-                "time": mytime.getCurrentTime(),
-                "date": mytime.getCurrentDate()
-            })
+        result.append({
+            "name": "Schlafzimmer",
+            "temp": temp,
+            "humid": humid,
+            "time": mytime.getCurrentTime(),
+            "date": mytime.getCurrentDate()
+        })
         log.info("result: ", result)
     except:
         log.info('exception in getAllTempData from sensor')
