@@ -17,6 +17,8 @@ thraedSensorData = threading.Thread(target=collectSensorData, daemon=True)
 threadRestApi = threading.Thread(target=Restapi.runServer, daemon=True)
 
 if (__name__ == "__main__"):
+    sleep(180)
+
     threadRestApi.start()
     thraedSensorData.start()
 
