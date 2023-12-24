@@ -20,6 +20,6 @@ def getAllTempData():
         "time": mytime.getCurrentTime(),
         "date": mytime.getCurrentDate()
     })
-    log.info("result: ", result)
+    log.info(f"result: {result}")
 
     return result
