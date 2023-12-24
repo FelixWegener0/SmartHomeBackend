@@ -7,7 +7,7 @@ cursor = db.connectCursor(database)
 
 
 def writeDataToDatabase(data):
-    log.info('write new Data to database data: ', data)
+    log.info(f'write new Data to database data: {data}')
     db.addDataBySQL(
         cursor, database, "INSERT INTO TempData(date, time, temperature, humidity, name) VALUES (?, ?, ?, ?, ?)", (data["date"], data["time"], data["temp"], data["humid"], data["name"]))
 
