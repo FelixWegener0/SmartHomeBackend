@@ -3,23 +3,28 @@ import json
 import my_time as mytime
 import Pythonlog as log
 
-# data = json.load(open("/home/pi/project/SmartHomeBackend/endpoints.json"))
+data = [
+    {
+        "name": "Schlafzimmer",
+        "ip": "192.168.0.187"
+    }
+]
 
 
 def getAllTempData():
     log.info('log get sensor data')
     result = []
 
-    temp = requests.get('http://192.168.0.187/temp').json()
-    humid = requests.get('http://192.168.0.187/humid').json()
+    for sensor in data:
+        temp = requests.get(f'http://{sensor["ip"]}/temp').json()
+        humid = requests.get(f'http://{sensor["ip"]}/humid').json()
 
-    result.append({
-        "name": "Schlafzimmer",
-        "temp": temp,
-        "humid": humid,
-        "time": mytime.getCurrentTime(),
-        "date": mytime.getCurrentDate()
-    })
+        result.append({
+            "name": sensor["name"],
+            "temp": temp,
+            "humid": humid,
+            "time": mytime.getCurrentTime(),
+            "date": mytime.getCurrentDate()
+        })
     log.info(f"result: {result}")
-
     return result
