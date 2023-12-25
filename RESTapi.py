@@ -39,7 +39,7 @@ class helloWorld(Resource):
 
 
 api.add_resource(getAllTodaysDataForRoom,
-                 '/allTodaysDataRoom/<string:name>/<boolean:allData>')
+                 '/allTodaysDataRoom/<string:name>/<int:allData>')
 api.add_resource(getAllTodaysData, '/allTodaysData')
 api.add_resource(getAllDataBaseData, '/allData')
 api.add_resource(helloWorld, '/')
