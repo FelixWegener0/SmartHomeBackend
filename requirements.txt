@@ -13,3 +13,4 @@ Werkzeug==1.0.1
 flask_cors
 Adafruit_DHT
 requests
+cryptography
