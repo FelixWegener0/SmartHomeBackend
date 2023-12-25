@@ -35,6 +35,12 @@ def getAllTodaysDataForRoom(room, allData):
         return result
 
 
+def getLastEntry(room):
+    result = db.getDataBySQL(
+        cursor, f"SELECT * FROM TempData WHERE date = '{my_time.getCurrentDate()}' AND name = '{room}' ORDER BY time DESC LIMIT 1")
+    return result
+
+
 def loopWriteToDB():
     log.info('log loopWriteToDatabase')
     data = apiInput.getAllTempData()

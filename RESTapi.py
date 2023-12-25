@@ -33,11 +33,18 @@ class getAllTodaysDataForRoom(Resource):
         return jsonify(result)
 
 
+class getLastEntyByRoom(Resource):
+    def get(self, room):
+        result = dataBaseFunction.getLastEntry(room)
+        return jsonify(result)
+
+
 class helloWorld(Resource):
     def get(self):
         return jsonify('Hello world')
 
 
+api.add_resource(getLastEntyByRoom, '/getLastEntyFor/<string:room>')
 api.add_resource(getAllTodaysDataForRoom,
                  '/allTodaysDataRoom/<string:room>/<int:allData>')
 api.add_resource(getAllTodaysData, '/allTodaysData')
