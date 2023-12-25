@@ -54,5 +54,5 @@ api.add_resource(helloWorld, '/')
 
 def runServer():
     log.info('Start flask API server as demon')
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', ssl_context='adhoc')
     db.databseColseConnect(database)
