@@ -21,11 +21,26 @@ class getAllDataBaseData(Resource):
         return jsonify(result)
 
 
+class getAllTodaysData(Resource):
+    def get(self):
+        result = dataBaseFunction.getAllTodaysData()
+        return jsonify(result)
+
+
+class getAllTodaysDataForRoom(Resource):
+    def get(self, room, allData):
+        result = dataBaseFunction.getAllTodaysDataForRoom(room, allData)
+        return jsonify(result)
+
+
 class helloWorld(Resource):
     def get(self):
         return jsonify('Hello world')
 
 
+api.add_resource(getAllTodaysDataForRoom,
+                 '/allTodaysDataRoom/<string:name>/<boolean:allData>')
+api.add_resource(getAllTodaysData, '/allTodaysData')
 api.add_resource(getAllDataBaseData, '/allData')
 api.add_resource(helloWorld, '/')
 

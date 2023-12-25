@@ -1,6 +1,7 @@
 import handleGetInfoFromSensors as apiInput
 import database_main as db
 import Pythonlog as log
+import my_time as my_time
 
 database = db.connectToDatabse()
 cursor = db.connectCursor(database)
@@ -15,6 +16,23 @@ def writeDataToDatabase(data):
 def getAllData():
     result = db.getDataBySQL(cursor, "SELECT * FROM TempData")
     return result
+
+
+def getAllTodaysData():
+    result = db.getDataBySQL(
+        cursor, f"SELECT * FROM TempData WHERE date = '{my_time.getCurrentDate()}'")
+    return result
+
+
+def getAllTodaysDataForRoom(room, allData):
+    if (allData):
+        result = db.getDataBySQL(
+            cursor, f"SELECT * FROM TempData WHERE date = '{my_time.getCurrentDate()}' AND name = '{room}'")
+        return result
+    else:
+        result = db.getDataBySQL(
+            cursor, f"SELECT * FROM TempData WHERE name = '{room}'")
+        return result
 
 
 def loopWriteToDB():
