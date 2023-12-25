@@ -1,19 +1,15 @@
 # SmartHomeBackend
 
-Cron-Job:
+# install
 
-Sie können auch einen Cron-Job verwenden, um Ihr Skript beim Booten auszuführen.
+# add script to startup
 
-Fügen Sie dies zum Crontab hinzu:
+in Terminal run:
 
-bash
-Copy code
-crontab -e
-Fügen Sie die Zeile hinzu:
+- crontab -e
 
-bash
-Copy code
-@reboot /pfad/zu/ihrem/skript.sh
-Vergewissern Sie sich erneut, dass Sie den absoluten Pfad zu Ihrem Skript verwenden.
+add this to the file:
 
-Wählen Sie die Methode aus, die am besten zu Ihren Anforderungen passt. Beachten Sie, dass die Methode mit systemd-Service-Units oft als modernere und flexiblere Methode betrachtet wird.
+- @reboot python /home/pi/project/SmartHomeBackend/main.py > /home/pi/project/SmartHomeBackend/output.log
+
+this will run the Script on boot the > param will write all logs to a specific log file
