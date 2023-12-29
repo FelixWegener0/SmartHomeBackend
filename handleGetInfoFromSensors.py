@@ -7,6 +7,10 @@ data = [
     {
         "name": "Schlafzimmer",
         "ip": "192.168.0.187"
+    },
+    {
+        "name": "Wohnzimmer",
+        "ip": "192.168.0.31"
     }
 ]
 
