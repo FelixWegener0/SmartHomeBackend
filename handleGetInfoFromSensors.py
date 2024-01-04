@@ -12,10 +12,10 @@ data = [
         "name": "Wohnzimmer",
         "ip": "192.168.0.31"
     },
-    {
-        "name": "Badezimmer",
-        "ip": "192.168.0.114"
-    }
+    # {
+    #     "name": "Badezimmer",
+    #     "ip": "192.168.0.114"
+    # }
 ]
 
 

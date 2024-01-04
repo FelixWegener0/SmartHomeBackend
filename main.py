@@ -10,7 +10,7 @@ def collectSensorData():
     log.info('start collectSensorData as deaon')
     while (True):
         database.loopWriteToDB()
-        sleep(900)
+        sleep(300)
 
 
 thraedSensorData = threading.Thread(target=collectSensorData, daemon=True)
@@ -21,7 +21,7 @@ if (__name__ == "__main__"):
     sleep(180)
 
     threadRestApi.start()
-    # thraedSensorData.start()
+    thraedSensorData.start()
 
     while (True):
         sleep(100000)
