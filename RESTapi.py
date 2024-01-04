@@ -4,6 +4,7 @@ from flask_cors import CORS, cross_origin
 import database_main as db
 import handleDatabaseInteractions as dataBaseFunction
 import Pythonlog as log
+import my_time as my_time
 
 database = db.connectToDatabse()
 cursor = db.connectCursor(database)
@@ -13,6 +14,24 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.config['CORS_HEADERS'] = 'Content-Type'
 api = Api(app)
+
+# Interaction between Sensor and Server
+
+
+class postDataToServer(Resource):
+    def get(self, room, temp, humid):
+        data = {
+            "date": my_time.getCurrentDate(),
+            "time": my_time.getCurrentTime(),
+            "humid": humid,
+            "temp": temp,
+            "name": room
+        }
+        if (temp != 0 and humid != 0):
+            dataBaseFunction.writeDataToDatabase(data)
+        return jsonify('success')
+
+# Interaction between Server and Frontend service
 
 
 class getAllDataBaseData(Resource):
@@ -44,6 +63,8 @@ class helloWorld(Resource):
         return jsonify('Hello world')
 
 
+api.add_resource(postDataToServer,
+                 'postDataToServer/<string:room>/<int:temp>/<int:humid>')
 api.add_resource(getLastEntyByRoom, '/getLastEntyFor/<string:room>')
 api.add_resource(getAllTodaysDataForRoom,
                  '/allTodaysDataRoom/<string:room>/<int:allData>')
