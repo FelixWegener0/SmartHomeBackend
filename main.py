@@ -21,7 +21,7 @@ if (__name__ == "__main__"):
     sleep(180)
 
     threadRestApi.start()
-    thraedSensorData.start()
+    # thraedSensorData.start()
 
     while (True):
         sleep(100000)
